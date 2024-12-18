@@ -4,7 +4,7 @@ let currentWord;
 let currentDict = [];
 initialize();
 async function initialize() {
-  currentDict = await loadDictionary(); // Assign the result to the global variable
+  currentDict = await loadDictionary(); 
   
   startGame();
 }
@@ -14,7 +14,7 @@ function startGame(){
   getRandomWord().then((randomWord) => {
     currentWord = randomWord.toLowerCase();
     //uncomment if you want the current word printed in the console
-    //console.log(currentWord);
+    console.log(currentWord);
   });
   document.getElementById('result').innerHTML = "";
   makeKeyboard();
@@ -176,20 +176,25 @@ function guess_notInWordList() {
   }, 1000);
 }
 
+//Currently bugged, does not count instances of letter
 function guess_wrongWord() {
   const currentWordArr = currentWord.split("");
 
   const letterDivs = guessDiv.children[currentRow].children;
   for (let i = 0; i < 5; i++) {
     const letter = letterDivs[i].textContent.toLowerCase();
-    let color = "#45433f";
+    let letterKey = getLetterDiv(letter);
+    let color;
+
     if (currentWordArr[i] === letter) {
       color = "green";
     } else if (currentWordArr.includes(letter)) {
-      color = "#baab34";
+      color = "#baab34"; //yellow
+    }else{
+      color = "#45433f";
+      letterKey.style.color = "white";
     }
     letterDivs[i].style.backgroundColor = color;
-    let letterKey = getLetterDiv(letter);
     letterKey.style.backgroundColor = color;
   }
   
