@@ -1,4 +1,6 @@
 # Description
+[TRY IT HERE](https://joipoi.github.io/games/wordle-copy/index.html)
+
 This is a copy of the game wordle that I made for fun. There is nothing superior or different about this version so it was just a fun coding project for me with no other purpose.
 
 
